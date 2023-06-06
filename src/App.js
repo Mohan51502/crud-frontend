@@ -17,7 +17,7 @@ function App() {
 
   const [data, setData] = useState(false);
 
-  const {  setLoginData } = useContext(LoginContext);
+  const { logindata, setLoginData } = useContext(LoginContext);
 
 
   const history = useNavigate();
