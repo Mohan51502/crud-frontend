@@ -22,31 +22,37 @@ const Header = () => {
     };
 
 
-    const logoutuser = async () => {
-        let token = localStorage.getItem("usersdatatoken");
+    // const logOut = () => {
+    //     window.localStorage.clear();
+    //     window.location.href = "/";
+    //   };
 
-        const res = await fetch("https://day44.onrender.com/logout", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": token,
-                Accept: "application/json"
-            },
-            credentials: "include"
-        });
 
-        const data = await res.json();
-        //console.log(data);
+    // const logoutuser = async () => {
+    //     let token = localStorage.getItem("usersdatatoken");
 
-        if (data.status === 201) {
-            //console.log("use logout");
-            localStorage.removeItem("usersdatatoken");
-            setLoginData(false)
-            history("/");
-        } else {
-            console.log("error");
-        }
-    }
+    //     const res = await fetch("https://day44.onrender.com/logout", {
+    //         method: "GET",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": token,
+    //             Accept: "application/json"
+    //         },
+    //         credentials: "include"
+    //     });
+
+    //     const data = await res.json();
+    //     //console.log(data);
+
+    //     if (data.status === 201) {
+    //         //console.log("use logout");
+    //         localStorage.removeItem("usersdatatoken");
+    //         setLoginData(false)
+    //         history("/");
+    //     } else {
+    //         console.log("error");
+    //     }
+    // }
 
     const goDash = () => {
         history("/dash")
@@ -87,7 +93,7 @@ const Header = () => {
                                         handleClose()
                                     }}>Profile</MenuItem>
                                     <MenuItem onClick={() => {
-                                        logoutuser()
+                                        logout()
                                         handleClose()
                                     }}>Logout</MenuItem>
                                 </>
