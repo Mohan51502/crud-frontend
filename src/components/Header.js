@@ -22,16 +22,16 @@ const Header = () => {
     };
 
 
-    // const logOut = () => {
-    //     window.localStorage.clear();
-    //     window.location.href = "/";
-    //   };
+    const logout = () => {
+        window.localStorage.clear();
+        window.location.href = "/";
+      };
 
 
     // const logoutuser = async () => {
     //     let token = localStorage.getItem("usersdatatoken");
 
-    //     const res = await fetch("https://day44.onrender.com/logout", {
+    //     const res = await fetch("https://day44backend.onrender.com/logout", {
     //         method: "GET",
     //         headers: {
     //             "Content-Type": "application/json",

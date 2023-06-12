@@ -52,7 +52,7 @@ const Login = () => {
             // console.log("user login succesfully done");
 
 
-            const data = await fetch("https://day44.onrender.com/login",{
+            const data = await fetch("https://day44backend.onrender.com/login",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
