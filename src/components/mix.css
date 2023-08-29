@@ -15,6 +15,7 @@ section .form_data{
     align-items: center;
 }
 
+
 .form_heading{
     display: flex;
     flex-direction: column;
