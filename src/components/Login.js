@@ -52,7 +52,7 @@ const Login = () => {
             // console.log("user login succesfully done");
 
 
-            const data = await fetch("https://day44backend.onrender.com/login",{
+            const data = await fetch("https://crud-backend-krbq.onrender.com/user/login",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -65,8 +65,9 @@ const Login = () => {
             const res = await data.json();
             //  console.log(res);
 
-            if(res.status === 201){
+            if(res.status === 200){
                 localStorage.setItem("usersdatatoken",res.result.token);
+                localStorage.setItem("_id",res.result.userValid._id);
                 history("/dash")
                 setInpval({...inpval,email:"",password:""});
             }else{

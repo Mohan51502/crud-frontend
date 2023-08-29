@@ -23,7 +23,7 @@ const PasswordReset = () => {
                 position: "top-center"
             });
         } else {
-            const res = await fetch("https://day44backend.onrender.com/sendpasswordlink", {
+            const res = await fetch("https://crud-backend-krbq.onrender.com/user/sendpasswordlink", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -33,7 +33,7 @@ const PasswordReset = () => {
 
             const data = await res.json();
 
-            if (data.status === 201) {
+            if (data.status === 200) {
                 setEmail("");
                 setMessage(true)
             } else {

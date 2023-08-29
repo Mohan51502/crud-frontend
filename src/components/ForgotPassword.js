@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     const [message, setMessage] = useState("");
 
     const userValid = async () => {
-        const res = await fetch(`https://day44backend.onrender.com/forgotpassword/${id}/${token}`, {
+        const res = await fetch(`https://crud-backend-krbq.onrender.com/user/forgotpassword/${id}/${token}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
         const data = await res.json()
 
-        if (data.status === 201) {
+        if (data.status === 200) {
             console.log("user valid")
         } else {
             history("*")
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                 position: "top-center"
             });
         } else {
-            const res = await fetch(`https://day44backend.onrender.com/${id}/${token}`, {
+            const res = await fetch(`https://crud-backend-krbq.onrender.com/user/${id}/${token}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -60,7 +60,7 @@ const ForgotPassword = () => {
 
             const data = await res.json()
 
-            if (data.status === 201) {
+            if (data.status === 200) {
                 setPassword("")
                 setMessage(true)
             } else {
@@ -75,7 +75,7 @@ const ForgotPassword = () => {
         userValid()
         setTimeout(() => {
             setData(true)
-        }, 3000)
+        }, 2000)
     }, [])
 
     return (

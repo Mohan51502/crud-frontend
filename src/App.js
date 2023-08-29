@@ -11,6 +11,13 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
 import "./App.css";
+import Adduser from "./components/Adduser";
+import Read from "./components/Read";
+import Update from "./components/Update";
+import EditEmployee from "./components/updateemployee";
+
+
+
 
 
 function App() {
@@ -25,7 +32,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("https://day44.onrender.com/validuser", {
+    const res = await fetch("https://crud-backend-krbq.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +42,7 @@ function App() {
 
     const data = await res.json();
 
-    if (data.status === 401 || !data) {
+    if (data.status === 400 || !data) {
       console.log("user not valid");
     } else {
       console.log("user verify");
@@ -48,7 +55,7 @@ function App() {
     setTimeout(()=>{
       DashboardValid();
       setData(true)
-    },2000)
+    },500)
 
   }, [])
 
@@ -66,6 +73,15 @@ function App() {
               <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
               <Route path="*" element={<Error />} />
+              <Route path="/adduser" element={<Adduser />} />
+              <Route path="/read/:_id" element={<Read />} />
+              <Route path="/update/:_id" element={<Update />} />
+              <Route path="/edit/:_id" element={<EditEmployee />} />
+
+
+
+
+
             </Routes>
           </>
 

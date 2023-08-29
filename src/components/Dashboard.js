@@ -1,25 +1,28 @@
 import React, { useContext, useEffect ,useState} from 'react'
-import { useNavigate } from 'react-router-dom';
 import { LoginContext } from './ContextProvider/Context';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import BackgroundAnimate from './BackgroundAnimate';
-import InputShortener from './InputShortener';
-import LinkResult from './LinkResult';
+import { useNavigate} from "react-router-dom";
+import Viewusers from './Viewuser';
+
+
+
+//import { Button } from '@mui/material';
 
 const Dashboard = () => {
 
     const { logindata, setLoginData } = useContext(LoginContext);
 
     const [data, setData] = useState(false);
+    console.log(logindata);
 
 
     const history = useNavigate();
 
-    const DashboardValid = async () => {
+    const StudentDashboardValid = async () => {
         let token = localStorage.getItem("usersdatatoken");
 
-        const res = await fetch("https://day44backend.onrender.com/validuser", {
+        const res = await fetch("https://crud-backend-krbq.onrender.com/user/validuser", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -29,40 +32,84 @@ const Dashboard = () => {
 
         const data = await res.json();
 
-        if (data.status == 401 || !data) {
-            history("*");
-        } else {
-            console.log("user verify");
+        if (data.status === 200) {
             setLoginData(data)
-            history("/dash");
+            history("/dash");        } else {
+           // console.log("user verify");
+           history("*");
         }
     }
 
 
     useEffect(() => {
         setTimeout(() => {
-            DashboardValid();
+
+            StudentDashboardValid();
             setData(true)
-        }, 2000)
+        },500)
 
     }, [])
 
-    const [inputValue, setInputValue] = useState("");
+
+    //const addUserdata = async (e) => {
+
+        // const res = await fetch(`http://localhost:5000/user/getAllUser`, {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // });
+
+        // const data = await res.json()
+
+        // if (data.status == 201) {
+        //     console.log("user valid")
+        // } else {
+        //     console.log(data);
+        // }
+        
+    //}
+    //var value = logindata.ValidUserOne.role
+    //console.log(value)
 
     return (
         <>
             {
-                data ? <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <img src="./man.png" style={{ width: "200px", marginTop: 20 }} alt="" />
-                    <h1>User Email:{logindata ? logindata.ValidUserOne.email : ""}</h1>
-                    <h1>User Name:{logindata ? logindata.ValidUserOne.fname : ""}</h1>
-                    <div className="container">
-      <InputShortener setInputValue={setInputValue} />
-      <BackgroundAnimate />
-      <LinkResult inputValue={inputValue} />
-    </div>
+                data ? <div style={{display:""}} className='studentdashboard'>
+                    
 
-                </div> : <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }} className='studentdashboardcenter'>
+                   
+                    <Viewusers/>
+
+                    </div>
+                    
+
+                    
+   
+
+
+{/* <p> <NavLink to="/adduser" className='btn btn-success'>Create User</NavLink> </p> */}
+<br/>
+
+{/* <p> <NavLink to="/viewusers">View Users</NavLink> </p> */}
+
+
+{/* <button className='btn' onClick={addUserdata}>view user</button> */}
+
+
+{/* <p> <div className='d-flex justify-content-end'>
+    <Link to={`/viewusers`} disabled={{} } className='btn btn-primary'>Add User</Link></div> </p> */}
+
+
+
+
+
+                </div> 
+                
+                
+                
+                : <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>
                     Loading... &nbsp;
                     <CircularProgress />
                 </Box>

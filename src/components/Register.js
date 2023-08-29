@@ -71,7 +71,7 @@ const Register = () => {
             // console.log("user registration succesfully done");
 
 
-            const data = await fetch("https://day44backend.onrender.com/register", {
+            const data = await fetch("https://crud-backend-krbq.onrender.com/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -84,7 +84,7 @@ const Register = () => {
             const res = await data.json();
             // console.log(res.status);
 
-            if (res.status === 201) {
+            if (res.status === 200) {
                 toast.success("Registration Successfully done 😃!", {
                     position: "top-center"
                 });
