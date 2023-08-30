@@ -13,7 +13,6 @@ import { LoginContext } from "./components/ContextProvider/Context";
 import "./App.css";
 import Adduser from "./components/Adduser";
 import Read from "./components/Read";
-import Update from "./components/Update";
 import EditEmployee from "./components/updateemployee";
 
 
@@ -76,7 +75,6 @@ function App() {
               <Route path="*" element={<Error />} />
               <Route path="/adduser" element={<Adduser />} />
               <Route path="/read/:_id" element={<Read />} />
-              <Route path="/update/:_id" element={<Update />} />
               <Route path="/edit/:_id" element={<EditEmployee />} />
 
 

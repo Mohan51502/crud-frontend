@@ -47,17 +47,17 @@ function EditEmployee() {
 				</div>
 				<div class="col-12">
 					<label for="inputEmail4" class="form-label">Email:</label>
-					<input type="email" class="form-control" id="inputEmail4" placeholder='Enter Email' autoComplete='off'
+					<input type="email" class="form-control" id="email" placeholder='Enter Email' autoComplete='off'
 					onChange={e => setData({...data, email: e.target.value})} value={data.email}/>
 				</div>
 				<div class="col-12">
 					<label for="inputSalary" class="form-label">Phone Number:</label>
-					<input type="number" class="form-control" id="inputSalary" placeholder="Enter Number" autoComplete='off'
+					<input type="number" class="form-control" id="phonenumber" placeholder="Enter Number" autoComplete='off'
 					onChange={e => setData({...data, phonenumber: e.target.value})} value={data.phonenumber}/>
 				</div>
 				<div class="col-12">
 					<label for="inputAddress" class="form-label">Password:</label>
-					<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" autoComplete='off'
+					<input type="text" class="form-control" id="password" placeholder="Enter Password" autoComplete='off'
 					onChange={e => setData({...data, password: e.target.value})} value={data.password}/>
 				
                 </div>
